@@ -352,7 +352,7 @@ ggmap(mapa, extent = "device") +
 ```{r plotGoogleMaps, eval = FALSE}
 library("plotGoogleMaps")
 ind_sp <- SpatialPointsDataFrame(ind_sp_LonLat, ind_ali[, c("establiment", "sector")])
-plotGoogleMaps(ind_sp[1:99, ], filename = "plotGoogleMaps/ind_.html", mapTypeId = "ROADMAP")
+plotGoogleMaps(ind_sp[1:99, ], filename = "Mapes dinamics/plotGoogleMaps.html", mapTypeId = "ROADMAP")
 ```
 
 ![alt text](images/plotGoogleMaps.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html
@@ -361,8 +361,8 @@ plotGoogleMaps(ind_sp[1:99, ], filename = "plotGoogleMaps/ind_.html", mapTypeId 
 
 ```{r leafletR, eval = FALSE, message = FALSE}
 library("leafletR")
-industries <- toGeoJSON(data = ind_ali_LonLat[1:99, c("lat",  "lon", "sector")], dest = "leaflet", name = "industries")
-ind_html <- leaflet(data = industries, dest = "leaflet", popup ="sector", base.map="mqsat", incl.data = TRUE)
+leaflet <- toGeoJSON(data = ind_ali_LonLat[1:99, c("lat",  "lon", "sector")], dest = "Mapes dinamics", name = "leaflet")
+ind_html <- leaflet(data = leaflet, dest = "leaflet", popup ="sector", base.map="mqsat", incl.data = TRUE)
 browseURL(ind_html)
 
 ```
@@ -372,11 +372,13 @@ browseURL(ind_html)
 ## googleVis
 
 ```{r googleVis, message=FALSE, warning=FALSE, results='asis', eval = FALSE}
-library(plotGoogleMaps)
+library(googleVis)
 ind_ali_LonLat$LatLong <- paste(ind_ali_LonLat$lat, ind_ali_LonLat$lon, sep = ":")
-indGoogleVis <- gvisMap(ind_ali_LonLat, "LatLong", options = list(useMapTypeControl=TRUE))
+indGoogleVis <- gvisMap(ind_ali_LonLat, "LatLong", 
+                        options = list(useMapTypeControl = TRUE, 
+                                       width = 800,height = 800))
 # plot(indGoogleVis)
-print(indGoogleVis, file = "googleVis/industria.html")
+print(indGoogleVis, file = "Mapes dinamics/googleVis.html")
 ```
 
 ![alt text](images/googleVis.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html
