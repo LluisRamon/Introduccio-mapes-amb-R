@@ -315,7 +315,8 @@ mapa <- get_map(location = center, zoom = zoom, maptype =  "roadmap")
 ggmap(mapa, extent = "device")
 ```
 
-![alt text](images/ggmap.png)
+![alt text](images/ggmap.png) 
+
 
 ---
 
@@ -354,13 +355,9 @@ ind_sp <- SpatialPointsDataFrame(ind_sp_LonLat, ind_ali[, c("establiment", "sect
 plotGoogleMaps(ind_sp[1:99, ], filename = "plotGoogleMaps/ind_.html", mapTypeId = "ROADMAP")
 ```
 
-![alt text](images/plotGoogleMaps.png)
+![alt text](images/plotGoogleMaps.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html
 
 ## LeafletR
-
-[Leaflet][] Llibreria javascript amb base a difrents servies. 
-
-[Leaflet]: http://en.wikipedia.org/wiki/Leaflet_(software)
 
 ```{r leafletR, eval = FALSE, message = FALSE}
 library("leafletR")
@@ -370,7 +367,7 @@ browseURL(ind_html)
 
 ```
 
-![alt text](images/Leaflet.png)
+![alt text](images/Leaflet.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/leafletMap/leafletMap.html
 
 ## googleVis
 
@@ -382,7 +379,7 @@ indGoogleVis <- gvisMap(ind_ali_LonLat, "LatLong", options = list(useMapTypeCont
 print(indGoogleVis, file = "googleVis/industria.html")
 ```
 
-![alt text](images/googleVis.png)
+![alt text](images/googleVis.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html
 
 ---
 
