@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Lluís Ramon" />
+  <title>Introducció a mapes amb R</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="Intro_mapes_amb_R_files/reveal.js-2.6.1/css/reveal.min.css"/>
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+     .reveal .title {
+        margin-top: 125px;
+        margin-bottom: 50px;
+     }
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+</style>
+
+<link rel="stylesheet" href="Intro_mapes_amb_R_files/reveal.js-2.6.1/css/theme/simple.css" id="theme">
+
+
+<link rel="stylesheet" media="print" href="Intro_mapes_amb_R_files/reveal.js-2.6.1/css/print/pdf.css" />
+
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Introducció a mapes amb R</h1>
+    <h2 class="author">Lluís Ramon</h2>
+    <h3 class="date">22 de abril de 2014</h3>
+</section>
+
+<section id="objectius" class="slide level2">
+<h1>Objectius</h1>
+<p><br></p>
+<ul>
+<li>Entendre estructura dades espacials</li>
+<li>Tractar dades espacials amb R</li>
+<li>Conèixer packages per representar mapes</li>
+<li>Crear mapes temàtics</li>
+<li>Crear mapes sobre Google Maps</li>
+<li>Crear mapes dinàmics</li>
+</ul>
+</section>
+<section id="tipus-objectes-espacials" class="slide level2">
+<h1>Tipus objectes espacials</h1>
+<p><br></p>
+<ul>
+<li><strong>Points</strong> (escoles, empreses alimentaries, …)</li>
+<li>Lines (carreteres, rius, …)</li>
+<li><strong>Polygons</strong> (paisos, comarques, …)</li>
+<li>Grid/Raster (informació per cada cel·les)</li>
+</ul>
+<p><br></p>
+<h3 id="nomes-tractarem-points-i-polygons">Només tractarem Points i Polygons</h3>
+<ul>
+<li><strong>Polygons</strong>: Mapes temàtics</li>
+<li><strong>Points</strong>: Mapes sobre Google Maps</li>
+</ul>
+<p><br></p>
+<p>Importarem informació Polygons d’un shapefile. <br> Es podria crear amb R però complicat <a href="http://www.maths.lancs.ac.uk/~rowlings/Teaching/UseR2012/cheatsheet.html">Spatial Cheatsheet</a>.</p>
+</section>
+<section id="que-es-un-shapefile" class="slide level2">
+<h1>Què és un Shapefile?</h1>
+<p><br></p>
+<p>Format intercanvi informació geogràfica.</p>
+<p><br></p>
+<ul>
+<li><strong>shp</strong>: emmagatzema entitats geomètriques dels objectes</li>
+<li><strong>dbf</strong>: emmagatzema informació dels atributs dels objectes</li>
+<li><strong>shx</strong>: emmagatzema l’índex de les entitats geomètriques</li>
+</ul>
+<p><br></p>
+<p>Molts organismes oficials ofereixen les dades geogràfiques en aquest format.</p>
+</section>
+<section id="importar-mapa-deuropa" class="slide level2">
+<h1>Importar mapa d’europa</h1>
+<p><br></p>
+<h3 id="llibreria-maptools">Llibreria <strong>maptools</strong></h3>
+<ul>
+<li>getinfo.shape</li>
+<li>readShapeXXX</li>
+</ul>
+<p>(XXX: Spatial, Points, Lines, Poly)</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maptools)
+<span class="kw">getinfo.shape</span>(<span class="st">&quot;data/europa.shp&quot;</span>)</code></pre>
+<pre><code>## Shapefile type: Polygon, (5), # of Shapes: 32</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">europa &lt;-<span class="st"> </span><span class="kw">readShapePoly</span>(<span class="st">&quot;data/europa.shp&quot;</span>)</code></pre>
+<p><br></p>
+<p>Què és europa? Un list? Un data.frame?</p>
+</section>
+<section id="estructura-dades-espacials" class="slide level2">
+<h1>Estructura dades espacials</h1>
+<p><br></p>
+<h3 id="llibreria-sp">Llibreria <strong>sp</strong></h3>
+<p><br></p>
+<h3 id="orientat-a-objectes-s4-classes"><a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Orientat a objectes</a> (<a href="http://stat.ethz.ch/R-manual/R-devel/library/methods/html/Classes.html">S4 Classes</a>)</h3>
+<br>
+<ul>
+<ul>
+<li>Objectes: Conté atributs que descriuen l’objecte</li>
+<li>Mètodes: Funcions sobre els objectes</li>
+<li>Benficis com: Inheritance, Polymorphism, Encapsulation, etc.
+</ul>
+</li>
+</ul>
+</section>
+<section id="estructura-sp" class="slide level2">
+<h1>Estructura sp</h1>
+<section>
+
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is</span>(europa)</code></pre>
+<pre><code>## [1] &quot;SpatialPolygonsDataFrame&quot; &quot;SpatialPolygons&quot;         
+## [3] &quot;Spatial&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">isS4</span>(europa)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getClass</span>(<span class="st">&quot;SpatialPolygonsDataFrame&quot;</span>)</code></pre>
+<pre><code>## Class &quot;SpatialPolygonsDataFrame&quot; [package &quot;sp&quot;]
+## 
+## Slots:
+##                                                                   
+## Name:         data    polygons   plotOrder        bbox proj4string
+## Class:  data.frame        list     integer      matrix         CRS
+## 
+## Extends: 
+## Class &quot;SpatialPolygons&quot;, directly
+## Class &quot;Spatial&quot;, by class &quot;SpatialPolygons&quot;, distance 2</code></pre>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">slotNames</span>(europa)</code></pre>
+<pre><code>## [1] &quot;data&quot;        &quot;polygons&quot;    &quot;plotOrder&quot;   &quot;bbox&quot;        &quot;proj4string&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(europa, <span class="dt">max.level =</span> <span class="dv">2</span>)</code></pre>
+<pre><code>## Formal class &#39;SpatialPolygonsDataFrame&#39; [package &quot;sp&quot;] with 5 slots
+##   ..@ data       :&#39;data.frame&#39;:  32 obs. of  5 variables:
+##   .. ..- attr(*, &quot;data_types&quot;)= chr [1:5] &quot;C&quot; &quot;N&quot; &quot;C&quot; &quot;N&quot; ...
+##   ..@ polygons   :List of 32
+##   ..@ plotOrder  : int [1:32] 31 28 13 12 24 11 7 25 32 17 ...
+##   ..@ bbox       : num [1:2, 1:2] -10.5 34.6 44.8 71.2
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   ..@ proj4string:Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slots</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bbox</span>(europa)</code></pre>
+<pre><code>##      min   max
+## x -10.48 44.82
+## y  34.57 71.17</code></pre>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(europa)</code></pre>
+<pre><code>## [1] &quot;SP_ID&quot;      &quot;STAT_LEVL_&quot; &quot;NUTS_ID&quot;    &quot;SHAPE_Leng&quot; &quot;SHAPE_Area&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(europa)</code></pre>
+<pre><code>## Object of class SpatialPolygonsDataFrame
+## Coordinates:
+##      min   max
+## x -10.48 44.82
+## y  34.57 71.17
+## Is projected: NA 
+## proj4string : [NA]
+## Data attributes:
+##      SP_ID      STAT_LEVL_    NUTS_ID     SHAPE_Leng      SHAPE_Area   
+##  AT     : 1   Min.   :0    AT     : 1   Min.   :  2.9   Min.   : 0.33  
+##  BE     : 1   1st Qu.:0    BE     : 1   1st Qu.: 18.5   1st Qu.: 5.73  
+##  BG     : 1   Median :0    BG     : 1   Median : 29.5   Median : 9.75  
+##  CH     : 1   Mean   :0    CH     : 1   Mean   : 59.1   Mean   :22.89  
+##  CY     : 1   3rd Qu.:0    CY     : 1   3rd Qu.: 70.9   3rd Qu.:35.53  
+##  CZ     : 1   Max.   :0    CZ     : 1   Max.   :451.6   Max.   :81.24  
+##  (Other):26                (Other):26</code></pre>
+</section>
+
+</section>
+<section id="grafic-base" class="slide level2">
+<h1>Gràfic base</h1>
+<section>
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(europa)</code></pre>
+<p><img src="Intro_mapes_amb_R_files/figure-revealjs/plot_base.png" alt="plot of chunk plot base" /></p>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(europa, <span class="dt">bg =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;white&quot;</span>)</code></pre>
+<p><img src="Intro_mapes_amb_R_files/figure-revealjs/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3" /></p>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(europa, <span class="dt">bg =</span> <span class="st">&quot;steelblue1&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;wheat&quot;</span>, <span class="dt">border =</span> <span class="st">&quot;sienna4&quot;</span>, <span class="dt">lwd =</span> <span class="fl">1.6</span>)</code></pre>
+<p><img src="Intro_mapes_amb_R_files/figure-revealjs/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4" /></p>
+</section>
+
+</section>
+<section id="preus-europeus-de-lelectricitat" class="slide level2">
+<h1>Preus europeus de l’electricitat</h1>
+<p><br></p>
+<p>Continuació entrada <a href="http://rugbcn.wordpress.com/2014/02/03/evolucio-del-preu-de-lelectricitat/">Evolució del preu de l’electricitat</a></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;data/preu_elec.RData&quot;</span>)
+<span class="kw">head</span>(preu_elec)</code></pre>
+<pre><code>##   geo  a2004  a2007  a2010  a2013 col2013
+## 3  AT 0.0981 0.1050 0.1427 0.1413 #FFFF00
+## 5  BE 0.1145 0.1229 0.1449 0.1583 #990033
+## 6  BG 0.0486 0.0547 0.0675 0.0771 #669966
+## 7  CY 0.0928 0.1177 0.1597 0.2277 #990033
+## 8  CZ 0.0660 0.0898 0.1108 0.1249 #FFFF00
+## 9  DE 0.1259 0.1433 0.1381 0.1493 #990033</code></pre>
+<p><br></p>
+<ul>
+<li>col2013 ja té el color segons intervals</li>
+<li>Com crear color explicat a <a href="http://rpubs.com/Lluis_Ramon/Presentacio_mapes_amb_R">Mapes amb R</a></li>
+<li>Llibreries <a href="http://cran.r-project.org/web/packages/classInt/index.html">classInt</a>, <a href="http://cran.r-project.org/web/packages/RColorBrewer/index.html">RColorBrewer</a>, funció palette, findColours</li>
+</ul>
+</section>
+<section id="creuar-dades-europa" class="slide level2">
+<h1>Creuar dades europa</h1>
+<section>
+
+<p><br></p>
+<p>merge accepta un Spatial i un data.frame.</p>
+<pre class="sourceCode r"><code class="sourceCode r">europa_elec &lt;-<span class="st"> </span><span class="kw">merge</span>(europa, preu_elec, <span class="dt">by.x =</span> <span class="st">&quot;SP_ID&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;geo&quot;</span>)
+<span class="kw">is</span>(europa_elec)</code></pre>
+<pre><code>## [1] &quot;SpatialPolygonsDataFrame&quot; &quot;SpatialPolygons&quot;         
+## [3] &quot;Spatial&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(europa_elec@data)</code></pre>
+<pre><code>##   SP_ID STAT_LEVL_ NUTS_ID SHAPE_Leng SHAPE_Area  a2004  a2007  a2010
+## 0    AT          0      AT     24.860    10.0283 0.0981 0.1050 0.1427
+## 1    BE          0      BE     14.006     3.8969 0.1145 0.1229 0.1449
+## 2    BG          0      BG     21.372    12.2090 0.0486 0.0547 0.0675
+## 3    CH          0      CH     17.455     4.8663     NA     NA     NA
+## 4    CY          0      CY      6.326     0.9189 0.0928 0.1177 0.1597
+## 5    CZ          0      CZ     20.822     9.8424 0.0660 0.0898 0.1108
+##    a2013 col2013
+## 0 0.1413 #FFFF00
+## 1 0.1583 #990033
+## 2 0.0771 #669966
+## 3     NA    &lt;NA&gt;
+## 4 0.2277 #990033
+## 5 0.1249 #FFFF00</code></pre>
+</section>
+<section class="slide level2">
+
+<p><br></p>
+<p>col a vector of colour values</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(europa_elec, <span class="dt">col =</span> europa_elec$col2013)</code></pre>
+<p><img src="Intro_mapes_amb_R_files/figure-revealjs/mapa_elec.png" alt="plot of chunk mapa_elec" /></p>
+</section>
+
+</section>
+<section id="spplot" class="slide level2">
+<h1>spplot</h1>
+<p><br></p>
+<pre class="sourceCode r"><code class="sourceCode r">colors &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;#669966&quot;</span>, <span class="st">&quot;#336699&quot;</span>, <span class="st">&quot;#FFFF00&quot;</span>, <span class="st">&quot;#990033&quot;</span>))(<span class="dv">32</span>)
+<span class="kw">spplot</span>(europa_elec, <span class="dt">zcol =</span> <span class="kw">c</span>(<span class="st">&quot;a2010&quot;</span>, <span class="st">&quot;a2013&quot;</span>, <span class="st">&quot;a2004&quot;</span>, <span class="st">&quot;a2007&quot;</span>), <span class="dt">col.regions =</span> colors)</code></pre>
+<p><img src="Intro_mapes_amb_R_files/figure-revealjs/spplot.png" alt="plot of chunk spplot" /></p>
+<ul>
+<li>Paleta de colors sobre tots els anys</li>
+<li>Utilitza package lattice. Funcionament semblant.</li>
+</ul>
+</section>
+<section id="mapa-de-industries-agraries-i-alimentaries-de-catalunya" class="slide level2">
+<h1>Mapa de industries agraries i alimentaries de Catalunya</h1>
+<p><br></p>
+<p>Dades del <a href="http://www20.gencat.cat/portal/site/DAR/menuitem.ea4a9707647429b7a3bc8110d8c0e1a0/?vgnextoid=870f4881cbb24110VgnVCM1000000b0c1e0aRCRD&amp;vgnextchannel=870f4881cbb24110VgnVCM1000000b0c1e0aRCRD&amp;vgnextfmt=detall2&amp;codInf=13732&amp;action=consultar">Registre d’indústries agràries i alimentàries de Catalunya (RIAAC)</a>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;data/ind_ali.RData&quot;</span>)
+<span class="kw">head</span>(ind_ali)</code></pre>
+<pre><code>##                             establiment             sector      x       y
+## 1                   A. I J. GARGANTA SL Alimentació animal 510067 4654945
+## 2             ABONOS ORGANICOS BOIX, SL    Altres agràries 445675 4645225
+## 3                   ABSOLUTUS OLEUM, SL     Olis i greixos 302692 4546957
+## 4    ACABADOS DOUBLE FACE DEL VALLES SA    Altres agràries 440397 4609387
+## 5 ACABADOS ESPECIALES VIC SA (AESVICSA)    Altres agràries 440348 4644908
+## 6                     ACCES FILTERS, SL          Forestals 462962 4623129</code></pre>
+<ul>
+<li>He simplificat i reduït els camps.</li>
+<li>Coordenades en UTM.</li>
+<li>Farem un mapa amb fons de Google Maps. Requereix coordenades LonLat.</li>
+</ul>
+</section>
+<section id="canviar-sistema-de-coordenades" class="slide level2">
+<h1>Canviar sistema de coordenades</h1>
+<p><br></p>
+<h3 id="llibreria-rgdal">Llibreria <strong>rgdal</strong></h3>
+<p>Funció spTransform, CRS</p>
+<p><br></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rgdal)
+
+coord_utm &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&quot;+proj=utm +zone=31&quot;</span>)
+coord_LonLat &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&quot;+proj=longlat&quot;</span>)
+
+ind_sp_utm &lt;-<span class="st"> </span><span class="kw">SpatialPoints</span>(ind_ali[, <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)], <span class="dt">proj4string =</span> coord_utm)
+ind_sp_LonLat &lt;-<span class="st"> </span><span class="kw">spTransform</span>(ind_sp_utm, coord_LonLat)
+lon &lt;-<span class="st"> </span><span class="kw">coordinates</span>(ind_sp_LonLat)[, <span class="dv">1</span>]
+lat &lt;-<span class="st"> </span><span class="kw">coordinates</span>(ind_sp_LonLat)[, <span class="dv">2</span>]
+ind_ali_LonLat &lt;-<span class="st"> </span><span class="kw">cbind</span>(ind_ali[, <span class="kw">c</span>(<span class="st">&quot;establiment&quot;</span>, <span class="st">&quot;sector&quot;</span>)], lon, lat)
+
+<span class="kw">head</span>(ind_ali_LonLat)</code></pre>
+<pre><code>##                             establiment             sector    lon   lat
+## 1                   A. I J. GARGANTA SL Alimentació animal 3.1216 42.05
+## 2             ABONOS ORGANICOS BOIX, SL    Altres agràries 2.3445 41.96
+## 3                   ABSOLUTUS OLEUM, SL     Olis i greixos 0.6522 41.05
+## 4    ACABADOS DOUBLE FACE DEL VALLES SA    Altres agràries 2.2844 41.63
+## 5 ACABADOS ESPECIALES VIC SA (AESVICSA)    Altres agràries 2.2802 41.95
+## 6                     ACCES FILTERS, SL          Forestals 2.5545 41.76</code></pre>
+</section>
+<section id="rgooglemaps" class="slide level2">
+<h1>RGoogleMaps</h1>
+<section>
+
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RgoogleMaps)
+mapa_fons &lt;-<span class="st"> </span><span class="kw">GetMap.bbox</span>(ind_ali_LonLat$lon, ind_ali_LonLat$lat)
+<span class="kw">PlotOnStaticMap</span>(mapa_fons)</code></pre>
+<p><img src="images/Mapa_fons.png" alt="alt text" /></p>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">PlotOnStaticMap</span>(mapa_fons, ind_ali_LonLat$lat, ind_ali_LonLat$lon, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</code></pre>
+<p><img src="images/Mapa_industries.png" alt="alt text" /></p>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r">cond &lt;-<span class="st"> </span>ind_ali_LonLat$sector ==<span class="st"> &quot;Lactis&quot;</span>
+ind_lac &lt;-<span class="st"> </span>ind_ali_LonLat[cond, ]
+
+cond &lt;-<span class="st"> </span>ind_ali_LonLat$sector ==<span class="st"> &quot;Peix&quot;</span>
+ind_peix &lt;-<span class="st"> </span>ind_ali_LonLat[cond, ]
+
+<span class="kw">PlotOnStaticMap</span>(mapa_fons, ind_lac$lat, ind_lac$lon, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>, <span class="dt">col =</span> <span class="st">&quot;steelblue1&quot;</span>)
+<span class="kw">PlotOnStaticMap</span>(mapa_fons, ind_peix$lat, ind_peix$lon, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre>
+<p><img src="images/Mapa_lactis_peix.png" alt="alt text" /></p>
+</section>
+
+</section>
+<section id="ggplot2-ggmap" class="slide level2">
+<h1>ggplot2 + ggmap</h1>
+<section>
+
+<p><br></p>
+<ul>
+<li>Utilitza <a href="http://cran.r-project.org/web/packages/ggplot2/index.html">ggplot2</a> de base</li>
+<li>ggplot2 permet fer mapes temàtics (funció fortify i geom_map)</li>
+<li>ggmap té funcions interessants (geocode, mapdist, route)</li>
+<li>Explicat a <a href="http://rpubs.com/Lluis_Ramon/Prestantacion_ggplot2_ggmap">Introducción práctica a la librería ggplot2 y su integración con ggmap</a></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
+center =<span class="st"> </span><span class="kw">c</span>(<span class="kw">mean</span>(ind_ali_LonLat$lon), <span class="kw">mean</span>(ind_ali_LonLat$lat))
+zoom &lt;-<span class="st"> </span><span class="kw">min</span>(<span class="kw">MaxZoom</span>(<span class="kw">range</span>(ind_ali_LonLat$lat), <span class="kw">range</span>(ind_ali_LonLat$lon))) <span class="co"># MaxZoom es de RgoogleMaps</span>
+mapa &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> center, <span class="dt">zoom =</span> zoom, <span class="dt">maptype =</span>  <span class="st">&quot;roadmap&quot;</span>)
+<span class="kw">ggmap</span>(mapa, <span class="dt">extent =</span> <span class="st">&quot;device&quot;</span>)</code></pre>
+<p><img src="images/ggmap.png" alt="alt text" /></p>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggmap</span>(mapa, <span class="dt">extent =</span> <span class="st">&quot;device&quot;</span>) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> ind_ali_LonLat, <span class="kw">aes</span>(lon, lat))</code></pre>
+<p><img src="images/ggmap_industries.png" alt="alt text" /></p>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggmap</span>(mapa, <span class="dt">extent =</span> <span class="st">&quot;device&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> ind_ali_LonLat, <span class="kw">aes</span>(lon, lat, <span class="dt">colour =</span> sector))</code></pre>
+<p><img src="images/ggmap_colour.png" alt="alt text" /></p>
+</section>
+<section class="slide level2">
+
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggmap</span>(mapa, <span class="dt">extent =</span> <span class="st">&quot;device&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> ind_ali_LonLat, <span class="kw">aes</span>(lon, lat, <span class="dt">colour =</span> sector), <span class="dt">size =</span> <span class="fl">0.8</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~sector) +<span class="st"> </span><span class="kw">guides</span>(<span class="dt">colour =</span> <span class="ot">FALSE</span>)</code></pre>
+<p><img src="images/ggmap_facets.png" alt="alt text" /></p>
+</section>
+
+</section>
+<section id="plotgooglemaps" class="slide level2">
+<h1>plotGoogleMaps</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;plotGoogleMaps&quot;</span>)
+ind_sp &lt;-<span class="st"> </span><span class="kw">SpatialPointsDataFrame</span>(ind_sp_LonLat, ind_ali[, <span class="kw">c</span>(<span class="st">&quot;establiment&quot;</span>, <span class="st">&quot;sector&quot;</span>)])
+<span class="kw">plotGoogleMaps</span>(ind_sp[<span class="dv">1</span>:<span class="dv">99</span>, ], <span class="dt">filename =</span> <span class="st">&quot;plotGoogleMaps/ind_.html&quot;</span>, <span class="dt">mapTypeId =</span> <span class="st">&quot;ROADMAP&quot;</span>)</code></pre>
+<p><img src="images/plotGoogleMaps.png" alt="alt text" /></p>
+</section>
+<section id="leafletr" class="slide level2">
+<h1>LeafletR</h1>
+<p><a href="http://en.wikipedia.org/wiki/Leaflet_(software)">Leaflet</a> Llibreria javascript amb base a difrents servies.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;leafletR&quot;</span>)
+industries &lt;-<span class="st"> </span><span class="kw">toGeoJSON</span>(<span class="dt">data =</span> ind_ali_LonLat[<span class="dv">1</span>:<span class="dv">99</span>, <span class="kw">c</span>(<span class="st">&quot;lat&quot;</span>,  <span class="st">&quot;lon&quot;</span>, <span class="st">&quot;sector&quot;</span>)], <span class="dt">dest =</span> <span class="st">&quot;leaflet&quot;</span>, <span class="dt">name =</span> <span class="st">&quot;industries&quot;</span>)
+ind_html &lt;-<span class="st"> </span><span class="kw">leaflet</span>(<span class="dt">data =</span> industries, <span class="dt">dest =</span> <span class="st">&quot;leaflet&quot;</span>, <span class="dt">popup =</span><span class="st">&quot;sector&quot;</span>, <span class="dt">base.map=</span><span class="st">&quot;mqsat&quot;</span>, <span class="dt">incl.data =</span> <span class="ot">TRUE</span>)
+<span class="kw">browseURL</span>(ind_html)</code></pre>
+<p><img src="images/Leaflet.png" alt="alt text" /></p>
+</section>
+<section id="googlevis" class="slide level2">
+<h1>googleVis</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotGoogleMaps)
+ind_ali_LonLat$LatLong &lt;-<span class="st"> </span><span class="kw">paste</span>(ind_ali_LonLat$lat, ind_ali_LonLat$lon, <span class="dt">sep =</span> <span class="st">&quot;:&quot;</span>)
+indGoogleVis &lt;-<span class="st"> </span><span class="kw">gvisMap</span>(ind_ali_LonLat, <span class="st">&quot;LatLong&quot;</span>, <span class="dt">options =</span> <span class="kw">list</span>(<span class="dt">useMapTypeControl=</span><span class="ot">TRUE</span>))
+<span class="co"># plot(indGoogleVis)</span>
+<span class="kw">print</span>(indGoogleVis, <span class="dt">file =</span> <span class="st">&quot;googleVis/industria.html&quot;</span>)</code></pre>
+<p><img src="images/googleVis.png" alt="alt text" /></p>
+</section>
+<section id="quins-packages-hem-usat" class="slide level2">
+<h1>Quins packages hem usat?</h1>
+<p><br></p>
+<ul>
+<li>sp (informació espacial, mapes temàtics)</li>
+<li>maptools (input/output)</li>
+<li>rgdal (projeccions, input/output)</li>
+<li>RgoogleMaps i ggmap (Afegir fons de Google Maps)</li>
+<li>plotGoogleMaps, leafletR, googleVis (mapes dinàmics)</li>
+</ul>
+</section>
+<section id="quins-packages-no-hem-usat" class="slide level2">
+<h1>Quins packages NO hem usat?</h1>
+<p><br></p>
+<ul>
+<li><a href="http://cran.r-project.org/web/packages/maps/index.html">maps</a></li>
+<li><a href="http://cran.r-project.org/web/packages/rworldmap/index.html">rworldmap</a></li>
+<li><a href="http://cran.r-project.org/web/packages/rgeos/index.html">rgeos</a></li>
+<li><a href="http://cran.r-project.org/web/packages/osmar/index.html">osmar</a> <a href="http://rugbcn.wordpress.com/2013/08/21/transport-public-de-zagreb/">Ex. osmar</a></li>
+<li><a href="http://cran.r-project.org/web/packages/geosphere/index.html">geosphere</a> <a href="http://flowingdata.com/2011/05/11/how-to-map-connections-with-great-circles/">Ex. vols avions</a></li>
+<li><a href="https://github.com/ramnathv/rMaps">rMaps</a> (a github) <a href="http://rmaps.github.io/blog/posts/animated-choropleths/index.html">Ex. rMaps</a></li>
+<li><a href="http://cran.r-project.org/web/views/Spatial.html">etc</a></li>
+</ul>
+</section>
+<section id="referencies" class="slide level2">
+<h1>Referències</h1>
+<p><br></p>
+<ul>
+<li>Llibre <a href="http://www.springer.com/public+health/book/978-0-387-78170-9">Applied Spatial Data Analysis with R</a></li>
+<li><a href="http://cran.r-project.org/web/views/Spatial.html">CRAN Task View: Analysis of Spatial Data</a></li>
+<li>R-News: <a href="http://www.r-project.org/doc/Rnews/Rnews_2005-2.pdf">Classes and methods for spatial data in R</a></li>
+<li><a href="http://www.maths.lancs.ac.uk/~rowlings/Teaching/UseR2012/cheatsheet.html">Spatial cheat Sheet</a></li>
+<li><a href="http://rpubs.com/Lluis_Ramon/Presentacio_mapes_amb_R">Mapes amb R</a></li>
+<li><a href="http://rpubs.com/Lluis_Ramon/Prestantacion_ggplot2_ggmap">Introducción práctica a la librería ggplot2 y su integración con ggmap</a></li>
+<li><a href="https://www.stat.auckland.ac.nz/S-Workshop/Gentleman/S4Objects.pdf">S4 Classes in 15 pages, more or less</a></li>
+</ul>
+<div class="references">
+
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="Intro_mapes_amb_R_files/reveal.js-2.6.1/lib/js/head.min.js"></script>
+  <script src="Intro_mapes_amb_R_files/reveal.js-2.6.1/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+        transition: 'default',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: []});
+    </script>
+
+  <!-- dynamically load mathjax for compatibility with --self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+  </body>
+</html>

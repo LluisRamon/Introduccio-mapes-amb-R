@@ -1,0 +1,2249 @@
+<html> 
+ <head> 
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+ <style type="text/css">  
+ html { height: 100% } 
+ body { height: 100%; margin: 0px; padding: 0px }
+  #map_canvas {min-height: 100%;
+height:auto; }
+ 
+ #cBoxes {position:absolute;
+right:5px;
+top:50px;
+background:white} 
+</style> 
+
+ <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>  
+
+ <script language="javascript"> 
+  
+ USGSOverlay.prototype = new google.maps.OverlayView(); 
+function USGSOverlay(bounds, image, map) {
+      this.bounds_ = bounds;
+      this.image_ = image;
+      this.map_ = map;
+      this.div_ = null;
+      this.setMap(map); }
+USGSOverlay.prototype.onAdd = function() {
+      var div = document.createElement("DIV");
+      div.style.border = "none";
+      div.style.borderWidth = "0px";
+      div.style.position = "absolute";
+      var img = document.createElement("img");
+      img.src = this.image_;
+      img.style.width = "100%";
+      img.style.height = "100%";
+      div.appendChild(img);
+      this.div_ = div;
+      this.div_.style.opacity = 0.7;
+      var panes = this.getPanes();
+      panes.overlayImage.appendChild(this.div_);}
+USGSOverlay.prototype.draw = function() {
+        var overlayProjection = this.getProjection();
+        var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+        var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
+        var div = this.div_;
+        div.style.left = sw.x + "px";
+        div.style.top = ne.y + "px";
+        div.style.width = (ne.x - sw.x) + "px";
+        div.style.height = (sw.y - ne.y) + "px";} 
+USGSOverlay.prototype.onRemove = function() { 
+ this.div_.parentNode.removeChild(this.div_);} 
+USGSOverlay.prototype.hide = function() { if (this.div_) { this.div_.style.visibility = "hidden";} } 
+USGSOverlay.prototype.show = function() {if (this.div_) {  this.div_.style.visibility = "visible";}} 
+       USGSOverlay.prototype.toggle = function() { 
+ if (this.div_) { 
+  if (this.div_.style.visibility == "hidden") {  
+   this.show(); 
+  } else { 
+  this.hide(); } } } 
+ USGSOverlay.prototype.toggleDOM = function() {
+          if (this.getMap()) {
+            this.setMap(null);
+          } else {
+            this.setMap(this.map_);}}
+ function setOpacR(Raster,textname) { 
+  opac=0.01*parseInt(document.getElementById(textname).value) 
+    Raster.div_.style.opacity= opac } 
+
+ var marker 
+ var map 
+ var  markersind_spX1x99xX =[] ; var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(42.0464887891919,3.12164482773706),
+ map:map,
+ title:"establiment : A. I J. GARGANTA SL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|00FF00|10|b|A. I J. GARGANTA SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.9571371162501,2.34448184138305),
+ map:map,
+ title:"establiment : ABONOS ORGANICOS BOIX, SL \rsector : Altres agràries \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|01FE00|10|b|ABONOS ORGANICOS BOIX, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0499450432071,0.652249327172635),
+ map:map,
+ title:"establiment : ABSOLUTUS OLEUM, SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|02FE00|10|b|ABSOLUTUS OLEUM, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6339886982688,2.28439848050646),
+ map:map,
+ title:"establiment : ACABADOS DOUBLE FACE DEL VALLES SA \rsector : Altres agràries \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|03FE00|10|b|ACABADOS DOUBLE FACE DEL VALLES SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.953897227898,2.28023985738516),
+ map:map,
+ title:"establiment : ACABADOS ESPECIALES VIC SA (AESVICSA) \rsector : Altres agràries \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|05FE00|10|b|ACABADOS ESPECIALES VIC SA (AESVICSA)"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7591283933317,2.55445316665913),
+ map:map,
+ title:"establiment : ACCES FILTERS, SL \rsector : Forestals \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|06FE00|10|b|ACCES FILTERS, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0429618103905,0.633629462203604),
+ map:map,
+ title:"establiment : ACEITES  HIJO DE MANUEL SU<d1>ER, SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|07FE00|10|b|ACEITES  HIJO DE MANUEL SU<d1>ER, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0429618103905,0.633629462203604),
+ map:map,
+ title:"establiment : ACEITES  HIJO DE MANUEL SU<d1>ER, SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|07FE00|10|b|ACEITES  HIJO DE MANUEL SU<d1>ER, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6504398370892,1.12130493388676),
+ map:map,
+ title:"establiment : ACEITES BORGES PONT SAU \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|09FE00|10|b|ACEITES BORGES PONT SAU"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6504398370892,1.12130493388676),
+ map:map,
+ title:"establiment : ACEITES BORGES PONT SAU \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|09FE00|10|b|ACEITES BORGES PONT SAU"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6504398370892,1.12130493388676),
+ map:map,
+ title:"establiment : ACEITES BORGES PONT SAU \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|09FE00|10|b|ACEITES BORGES PONT SAU"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6504398370892,1.12130493388676),
+ map:map,
+ title:"establiment : ACEITES BORGES PONT SAU \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|09FE00|10|b|ACEITES BORGES PONT SAU"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6504398370892,1.12130493388676),
+ map:map,
+ title:"establiment : ACEITES BORGES PONT SAU \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|09FE00|10|b|ACEITES BORGES PONT SAU"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6351958364863,2.17929429083931),
+ map:map,
+ title:"establiment : ACEITES DE SEMILLAS, SA \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0AFE00|10|b|ACEITES DE SEMILLAS, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0441425482646,0.636739826738609),
+ map:map,
+ title:"establiment : ACEITES ESCODA CB \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0BFE00|10|b|ACEITES ESCODA CB"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0441425482646,0.636739826738609),
+ map:map,
+ title:"establiment : ACEITES ESCODA CB \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0BFE00|10|b|ACEITES ESCODA CB"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0441425482646,0.636739826738609),
+ map:map,
+ title:"establiment : ACEITES ESCODA CB \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0BFE00|10|b|ACEITES ESCODA CB"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0441425482646,0.636739826738609),
+ map:map,
+ title:"establiment : ACEITES ESCODA CB \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0BFE00|10|b|ACEITES ESCODA CB"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0441425482646,0.636739826738609),
+ map:map,
+ title:"establiment : ACEITES ESCODA CB \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0BFE00|10|b|ACEITES ESCODA CB"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0442629692957,0.636902073529635),
+ map:map,
+ title:"establiment : ACEITES ESCODA CB \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0BFE00|10|b|ACEITES ESCODA CB"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6113875525304,2.60718762667305),
+ map:map,
+ title:"establiment : ACEITES MILLAS, SA \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0CFE00|10|b|ACEITES MILLAS, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6113875525304,2.60718762667305),
+ map:map,
+ title:"establiment : ACEITES MILLAS, SA \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0CFE00|10|b|ACEITES MILLAS, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6113875525304,2.60718762667305),
+ map:map,
+ title:"establiment : ACEITES MILLAS, SA \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0CFE00|10|b|ACEITES MILLAS, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6113875525304,2.60718762667305),
+ map:map,
+ title:"establiment : ACEITES MILLAS, SA \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0CFE00|10|b|ACEITES MILLAS, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6113875525304,2.60718762667305),
+ map:map,
+ title:"establiment : ACEITES MILLAS, SA \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0CFE00|10|b|ACEITES MILLAS, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4936088817848,2.34143755461878),
+ map:map,
+ title:"establiment : ACEITES PREMIUM, SL \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0DFE00|10|b|ACEITES PREMIUM, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4936088817848,2.34143755461878),
+ map:map,
+ title:"establiment : ACEITES PREMIUM, SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0DFE00|10|b|ACEITES PREMIUM, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.3499786322036,2.02894744096215),
+ map:map,
+ title:"establiment : ACEITUNAS DEL PUEBLO, SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0EFE00|10|b|ACEITUNAS DEL PUEBLO, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4835784516882,2.1732328941528),
+ map:map,
+ title:"establiment : ACEITUNAS HERMANOS P<c9>REZ, SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|0FFE00|10|b|ACEITUNAS HERMANOS P<c9>REZ, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6021564190129,2.08488828489606),
+ map:map,
+ title:"establiment : ACEITUNAS HNOS. GONZ<c1>LEZ, SCP \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|10FE00|10|b|ACEITUNAS HNOS. GONZ<c1>LEZ, SCP"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6792211402514,2.77948458827896),
+ map:map,
+ title:"establiment : ACEITUNAS LA TORTOLA, SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|11FE00|10|b|ACEITUNAS LA TORTOLA, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4179862969784,2.21039455325396),
+ map:map,
+ title:"establiment : ACEITUNAS RABADAN, SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|12FE00|10|b|ACEITUNAS RABADAN, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5313304510029,1.87542060745552),
+ map:map,
+ title:"establiment : ACEITUNAS REDONDO, SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|13FE00|10|b|ACEITUNAS REDONDO, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4803488977232,1.87812309750933),
+ map:map,
+ title:"establiment : ACEITUNAS Y ENCURTIDOS VEGA Y LOPEZ SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|14FE00|10|b|ACEITUNAS Y ENCURTIDOS VEGA Y LOPEZ SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4836324048352,2.17322023008803),
+ map:map,
+ title:"establiment : ACEITUNAS, CONSERVAS Y ENCURTIDOS DE CATALUNYA, SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|14FE00|10|b|ACEITUNAS, CONSERVAS Y ENCURTIDOS DE CATALUNYA, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4836324048352,2.17322023008803),
+ map:map,
+ title:"establiment : ACEITUNAS, CONSERVAS Y ENCURTIDOS DE CATALUNYA, SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|14FE00|10|b|ACEITUNAS, CONSERVAS Y ENCURTIDOS DE CATALUNYA, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6260238830807,0.626789393987157),
+ map:map,
+ title:"establiment : ACEITUNERA LERIDANA, S.L. \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|15FE00|10|b|ACEITUNERA LERIDANA, S.L."), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7084801693892,0.753261059523585),
+ map:map,
+ title:"establiment : ACTEL, SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|16FE00|10|b|ACTEL, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7084801693892,0.753261059523585),
+ map:map,
+ title:"establiment : ACTEL, SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|16FE00|10|b|ACTEL, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.521646602527,0.864086034996038),
+ map:map,
+ title:"establiment : ACTEL, SCCL \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|16FE00|10|b|ACTEL, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.521646602527,0.864086034996038),
+ map:map,
+ title:"establiment : ACTEL, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|16FE00|10|b|ACTEL, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1293720268406,0.802529232753348),
+ map:map,
+ title:"establiment : ACUSTIC CELLER ,SL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|17FE00|10|b|ACUSTIC CELLER ,SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1293720268406,0.802529232753348),
+ map:map,
+ title:"establiment : ACUSTIC CELLER ,SL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|17FE00|10|b|ACUSTIC CELLER ,SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1293720268406,0.802529232753348),
+ map:map,
+ title:"establiment : ACUSTIC CELLER ,SL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|17FE00|10|b|ACUSTIC CELLER ,SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1293720268406,0.802529232753348),
+ map:map,
+ title:"establiment : ACUSTIC CELLER ,SL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|17FE00|10|b|ACUSTIC CELLER ,SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1041355067345,0.752667182151739),
+ map:map,
+ title:"establiment : ACUSTIC, SCP \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|17FE00|10|b|ACUSTIC, SCP"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.428179799759,1.78683329255688),
+ map:map,
+ title:"establiment : ADDAIA CELLER, SL \rsector : Midons \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|18FE00|10|b|ADDAIA CELLER, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.428179799759,1.78683329255688),
+ map:map,
+ title:"establiment : ADDAIA CELLER, SL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|18FE00|10|b|ADDAIA CELLER, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.428179799759,1.78683329255688),
+ map:map,
+ title:"establiment : ADDAIA CELLER, SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|18FE00|10|b|ADDAIA CELLER, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.428179799759,1.78683329255688),
+ map:map,
+ title:"establiment : ADDAIA CELLER, SL \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|18FE00|10|b|ADDAIA CELLER, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.428179799759,1.78683329255688),
+ map:map,
+ title:"establiment : ADDAIA CELLER, SL \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|18FE00|10|b|ADDAIA CELLER, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7159048922494,0.575859724136031),
+ map:map,
+ title:"establiment : ADELL TORRES Y CIA SL \rsector : Fleca i pastes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|19FE00|10|b|ADELL TORRES Y CIA SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.329399709021,2.12363324559081),
+ map:map,
+ title:"establiment : ADISA LOG<cd>STICA SA \rsector : Peix \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|19FE00|10|b|ADISA LOG<cd>STICA SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.8859945865968,3.14048043270826),
+ map:map,
+ title:"establiment : ADNEHO SL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1AFE00|10|b|ADNEHO SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.8859945865968,3.14048043270826),
+ map:map,
+ title:"establiment : ADNEHO SL \rsector : Peix \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1AFE00|10|b|ADNEHO SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.8859945865968,3.14048043270826),
+ map:map,
+ title:"establiment : ADNEHO SL \rsector : Altres alimentaris \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1AFE00|10|b|ADNEHO SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5802360182211,0.572487089265201),
+ map:map,
+ title:"establiment : AEROPIC, SA \rsector : Carnics \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1BFE00|10|b|AEROPIC, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.3136527335046,1.65413954816018),
+ map:map,
+ title:"establiment : AFFINITY PETCARE, SA \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1BFE00|10|b|AFFINITY PETCARE, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1560335179326,1.14162182585522),
+ map:map,
+ title:"establiment : AFRUSE, SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1CFE00|10|b|AFRUSE, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7897918895494,3.03255520649934),
+ map:map,
+ title:"establiment : AGGLOTAP, SA \rsector : Forestals \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1CFE00|10|b|AGGLOTAP, SA"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.9049853838397,2.7913208574372),
+ map:map,
+ title:"establiment : AGLO CATALANA DEL SURO, SL \rsector : Forestals \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1DFE00|10|b|AGLO CATALANA DEL SURO, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1840913794947,1.04587587030872),
+ map:map,
+ title:"establiment : AGR. I CAIXA AGR. I SECC. DE CR<c8>DIT SANT ISIDRE DE MASPUJOLS, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1DFE00|10|b|AGR. I CAIXA AGR. I SECC. DE CR<c8>DIT SANT ISIDRE DE MASPUJOLS, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.1840913794947,1.04587587030872),
+ map:map,
+ title:"establiment : AGR. I CAIXA AGR. I SECC. DE CR<c8>DIT SANT ISIDRE DE MASPUJOLS, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1DFE00|10|b|AGR. I CAIXA AGR. I SECC. DE CR<c8>DIT SANT ISIDRE DE MASPUJOLS, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.8750356349209,0.722370189621145),
+ map:map,
+ title:"establiment : AGR<c0>RIA CAL PAU SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1EFD00|10|b|AGR<c0>RIA CAL PAU SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.8750356349209,0.722370189621145),
+ map:map,
+ title:"establiment : AGR<c0>RIA CAL PAU SL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1EFD00|10|b|AGR<c0>RIA CAL PAU SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.8751113981274,0.876176327863786),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE CAMARASA, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1FFD00|10|b|AGR<c0>RIA DE CAMARASA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.8751113981274,0.876176327863786),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE CAMARASA, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1FFD00|10|b|AGR<c0>RIA DE CAMARASA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5639668964466,0.587282883038567),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE MONTOLIU DE LLEIDA I SECCI<d3> DE CR<c8>DIT SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|20FD00|10|b|AGR<c0>RIA DE MONTOLIU DE LLEIDA I SECCI<d3> DE CR<c8>DIT SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5612307337855,1.05750483815433),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|20FD00|10|b|AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5612307337855,1.05750483815433),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|20FD00|10|b|AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5612307337855,1.05750483815433),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|20FD00|10|b|AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(42.042766600733,2.27187931315361),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE TORELL<d3>, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|21FD00|10|b|AGR<c0>RIA DE TORELL<d3>, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(42.042766600733,2.27187931315361),
+ map:map,
+ title:"establiment : AGR<c0>RIA DE TORELL<d3>, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|21FD00|10|b|AGR<c0>RIA DE TORELL<d3>, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6337042362832,2.29668377229156),
+ map:map,
+ title:"establiment : AGR<c0>RIA DEL VALL<c8>S, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|21FD00|10|b|AGR<c0>RIA DEL VALL<c8>S, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6337042362832,2.29668377229156),
+ map:map,
+ title:"establiment : AGR<c0>RIA DEL VALL<c8>S, SCCL \rsector : Midons \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|21FD00|10|b|AGR<c0>RIA DEL VALL<c8>S, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5010993556093,1.07558534897936),
+ map:map,
+ title:"establiment : AGRARIA DELS OMELLS DE NA GAIA SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|22FD00|10|b|AGRARIA DELS OMELLS DE NA GAIA SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5010993556093,1.07558534897936),
+ map:map,
+ title:"establiment : AGRARIA DELS OMELLS DE NA GAIA SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|22FD00|10|b|AGRARIA DELS OMELLS DE NA GAIA SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5010993556093,1.07558534897936),
+ map:map,
+ title:"establiment : AGRARIA D'OMELLS DE NA GAIA, SCCL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|1FFD00|10|b|AGRARIA D'OMELLS DE NA GAIA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4981287135164,1.00591274461566),
+ map:map,
+ title:"establiment : AGRARIA ESPLUGUENSE, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|22FD00|10|b|AGRARIA ESPLUGUENSE, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.4981287135164,1.00591274461566),
+ map:map,
+ title:"establiment : AGRARIA ESPLUGUENSE, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|22FD00|10|b|AGRARIA ESPLUGUENSE, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7031249970078,1.49336378169769),
+ map:map,
+ title:"establiment : AGR<c0>RIA ESTANY, SL \rsector : Altres agràries \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|23FD00|10|b|AGR<c0>RIA ESTANY, SL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(42.428102604616,1.1292715619582),
+ map:map,
+ title:"establiment : AGRARIA I RAMADERA DEL PALLARS DE SORT SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|23FD00|10|b|AGRARIA I RAMADERA DEL PALLARS DE SORT SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(42.4159172358933,1.13308552187638),
+ map:map,
+ title:"establiment : AGRARIA I RAMADERA DEL PALLARS DE SORT SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|23FD00|10|b|AGRARIA I RAMADERA DEL PALLARS DE SORT SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5201948823831,0.868364175955128),
+ map:map,
+ title:"establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|23FD00|10|b|AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5201948823831,0.868364175955128),
+ map:map,
+ title:"establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|23FD00|10|b|AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5240986806736,0.874899560589282),
+ map:map,
+ title:"establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|23FD00|10|b|AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7504473742868,0.659805058619962),
+ map:map,
+ title:"establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT SANT ROC D'ALBESA SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|24FD00|10|b|AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT SANT ROC D'ALBESA SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.5484240931853,0.72974025202968),
+ map:map,
+ title:"establiment : AGR<c0>RIA PIVERD SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|24FD00|10|b|AGR<c0>RIA PIVERD SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.9898455412389,2.27925552836796),
+ map:map,
+ title:"establiment : AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|25FD00|10|b|AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.910061894104,2.28895584017772),
+ map:map,
+ title:"establiment : AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|25FD00|10|b|AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.910061894104,2.28895584017772),
+ map:map,
+ title:"establiment : AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|25FD00|10|b|AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.6921049792845,0.634742340241361),
+ map:map,
+ title:"establiment : AGRARIA PROGRESIVA, SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|25FD00|10|b|AGRARIA PROGRESIVA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7394096078089,0.642818450988492),
+ map:map,
+ title:"establiment : AGRARIA PROGRESSIVA BENAVENT DE SEGRI<c0>, SCCL \rsector : Fruites i hortalisses \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|26FD00|10|b|AGRARIA PROGRESSIVA BENAVENT DE SEGRI<c0>, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0809068217112,0.641005422778958),
+ map:map,
+ title:"establiment : AGR<c0>RIA SANT ANTONI ABAD DE M<d3>RA D'EBRE SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|26FD00|10|b|AGR<c0>RIA SANT ANTONI ABAD DE M<d3>RA D'EBRE SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.0809068217112,0.641005422778958),
+ map:map,
+ title:"establiment : AGR<c0>RIA SANT ANTONI ABAD DE M<d3>RA D'EBRE SCCL \rsector : Olis i greixos \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|26FD00|10|b|AGR<c0>RIA SANT ANTONI ABAD DE M<d3>RA D'EBRE SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7507941288533,0.659143012780575),
+ map:map,
+ title:"establiment : AGR<c0>RIA SANT ROC, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|27FD00|10|b|AGR<c0>RIA SANT ROC, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(41.7507941288533,0.659143012780575),
+ map:map,
+ title:"establiment : AGR<c0>RIA SANT ROC, SCCL \rsector : Alimentació animal \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|27FD00|10|b|AGR<c0>RIA SANT ROC, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.9558237982736,0.312340012273496),
+ map:map,
+ title:"establiment : AGRARIA SANT SALVADOR  D'HORTA, SCCL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|27FD00|10|b|AGRARIA SANT SALVADOR  D'HORTA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.9558237982736,0.312340012273496),
+ map:map,
+ title:"establiment : AGRARIA SANT SALVADOR  D'HORTA, SCCL \rsector : Begudes \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|27FD00|10|b|AGRARIA SANT SALVADOR  D'HORTA, SCCL"), 
+  zIndex: null }); 
+markersind_spX1x99xX.push(marker); 
+
+ function setOpacL(MLPArray,textname) {
+opacity=0.01*parseInt(document.getElementById(textname).value) 
+
+for (var i = 0; i < MLPArray.length; i++) { MLPArray[i].setOptions
+({strokeOpacity: opacity}); } } 
+function showO(MLPArray,boxname) { 
+
+for (var i = 0; i < MLPArray.length; i++) { 
+ MLPArray[i].setMap(map); } 
+
+ document.getElementById(boxname).checked = true; } 
+ function hideO(MLPArray,boxname) { 
+
+for (var i = 0; i < MLPArray.length; i++) { 
+ MLPArray[i].setMap(null);} 
+
+ document.getElementById(boxname).checked = false; } 
+ function boxclick(box,MLPArray,boxname)
+{ 
+ if (box.checked) { 
+ showO(MLPArray,boxname); 
+ }
+ else { 
+ hideO(MLPArray,boxname);} } 
+ function setOpac(MLPArray,textname)
+ {opacity=0.01*parseInt(document.getElementById(textname).value) 
+ for
+  (var i = 0; i < MLPArray.length; i++) { MLPArray[i].setOptions({strokeOpacity:
+  opacity, fillOpacity: opacity}); } } 
+ function setLineWeight(MLPArray,textnameW)
+ {weight=parseInt(document.getElementById(textnameW).value) 
+
+ for (var i = 0; i < MLPArray.length; i++)
+  { MLPArray[i].setOptions({strokeWeight: weight}); } } 
+function legendDisplay(box,divLegendImage){ 
+
+element = document.getElementById(divLegendImage).style; 
+ if (box.checked)
+ { element.display="block";} else {  element.display="none";}} 
+function showR(R,boxname) { R.setMap(map);
+ 
+ document.getElementById(boxname).checked = true; } 
+  function hideR(R,boxname) { R.setMap(null);
+ 
+ document.getElementById(boxname).checked = false; } 
+ function boxclickR(box,R,boxname) { 
+ if (box.checked)
+{ 
+ showR(R,boxname);
+ } else { 
+ hideR(R,boxname);} }  
+function legendDisplay(box,divLegendImage){
+
+ element = document.getElementById(divLegendImage).style; 
+ if (box.checked)
+ { element.display="block";} else {  element.display="none";}} 
+function initialize() { 
+ var latlng = new google.maps.LatLng( 41.5720037484327 , 1.72641022249088 ) ; 
+ 
+ var myOptions = { zoom: 15 , 
+ center: latlng , 
+ mapTypeId: google.maps.MapTypeId.ROADMAP  ,
+ disableDefaultUI: false  ,
+ disableDoubleClickZoom: false  ,
+  draggable: true  ,
+  keyboardShortcuts:  true  ,
+ mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DEFAULT}  ,
+  navigationControl: true  ,
+ navigationControlOptions: {style: google.maps.NavigationControlStyle.DEFAULT}  ,
+ noClear: false  ,
+ scaleControl: true  ,
+ scaleControlOptions: {style: google.maps.ScaleControlStyle.STANDARD}  ,
+  scrollwheel: true  ,
+ streetViewControl: false } ; 
+ 
+ map= new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
+ map.fitBounds(new google.maps.LatLngBounds(
+ new google.maps.LatLng(40.7159048922494,0.312340012273496),
+ new google.maps.LatLng( 42.428102604616,3.14048043270826)));   var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[0] ,"click",function(event){ 
+ infowindow.content="establiment : A. I J. GARGANTA SL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[0] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[1] ,"click",function(event){ 
+ infowindow.content="establiment : ABONOS ORGANICOS BOIX, SL <br>sector : Altres agràries <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[1] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[2] ,"click",function(event){ 
+ infowindow.content="establiment : ABSOLUTUS OLEUM, SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[2] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[3] ,"click",function(event){ 
+ infowindow.content="establiment : ACABADOS DOUBLE FACE DEL VALLES SA <br>sector : Altres agràries <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[3] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[4] ,"click",function(event){ 
+ infowindow.content="establiment : ACABADOS ESPECIALES VIC SA (AESVICSA) <br>sector : Altres agràries <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[4] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[5] ,"click",function(event){ 
+ infowindow.content="establiment : ACCES FILTERS, SL <br>sector : Forestals <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[5] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[6] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES  HIJO DE MANUEL SU<d1>ER, SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[6] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[7] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES  HIJO DE MANUEL SU<d1>ER, SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[7] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[8] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES BORGES PONT SAU <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[8] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[9] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES BORGES PONT SAU <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[9] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[10] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES BORGES PONT SAU <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[10] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[11] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES BORGES PONT SAU <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[11] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[12] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES BORGES PONT SAU <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[12] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[13] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES DE SEMILLAS, SA <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[13] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[14] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES ESCODA CB <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[14] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[15] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES ESCODA CB <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[15] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[16] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES ESCODA CB <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[16] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[17] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES ESCODA CB <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[17] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[18] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES ESCODA CB <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[18] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[19] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES ESCODA CB <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[19] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[20] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES MILLAS, SA <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[20] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[21] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES MILLAS, SA <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[21] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[22] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES MILLAS, SA <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[22] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[23] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES MILLAS, SA <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[23] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[24] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES MILLAS, SA <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[24] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[25] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES PREMIUM, SL <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[25] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[26] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITES PREMIUM, SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[26] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[27] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS DEL PUEBLO, SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[27] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[28] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS HERMANOS P<c9>REZ, SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[28] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[29] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS HNOS. GONZ<c1>LEZ, SCP <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[29] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[30] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS LA TORTOLA, SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[30] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[31] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS RABADAN, SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[31] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[32] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS REDONDO, SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[32] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[33] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS Y ENCURTIDOS VEGA Y LOPEZ SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[33] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[34] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS, CONSERVAS Y ENCURTIDOS DE CATALUNYA, SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[34] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[35] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNAS, CONSERVAS Y ENCURTIDOS DE CATALUNYA, SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[35] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[36] ,"click",function(event){ 
+ infowindow.content="establiment : ACEITUNERA LERIDANA, S.L. <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[36] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[37] ,"click",function(event){ 
+ infowindow.content="establiment : ACTEL, SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[37] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[38] ,"click",function(event){ 
+ infowindow.content="establiment : ACTEL, SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[38] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[39] ,"click",function(event){ 
+ infowindow.content="establiment : ACTEL, SCCL <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[39] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[40] ,"click",function(event){ 
+ infowindow.content="establiment : ACTEL, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[40] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[41] ,"click",function(event){ 
+ infowindow.content="establiment : ACUSTIC CELLER ,SL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[41] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[42] ,"click",function(event){ 
+ infowindow.content="establiment : ACUSTIC CELLER ,SL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[42] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[43] ,"click",function(event){ 
+ infowindow.content="establiment : ACUSTIC CELLER ,SL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[43] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[44] ,"click",function(event){ 
+ infowindow.content="establiment : ACUSTIC CELLER ,SL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[44] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[45] ,"click",function(event){ 
+ infowindow.content="establiment : ACUSTIC, SCP <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[45] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[46] ,"click",function(event){ 
+ infowindow.content="establiment : ADDAIA CELLER, SL <br>sector : Midons <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[46] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[47] ,"click",function(event){ 
+ infowindow.content="establiment : ADDAIA CELLER, SL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[47] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[48] ,"click",function(event){ 
+ infowindow.content="establiment : ADDAIA CELLER, SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[48] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[49] ,"click",function(event){ 
+ infowindow.content="establiment : ADDAIA CELLER, SL <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[49] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[50] ,"click",function(event){ 
+ infowindow.content="establiment : ADDAIA CELLER, SL <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[50] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[51] ,"click",function(event){ 
+ infowindow.content="establiment : ADELL TORRES Y CIA SL <br>sector : Fleca i pastes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[51] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[52] ,"click",function(event){ 
+ infowindow.content="establiment : ADISA LOG<cd>STICA SA <br>sector : Peix <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[52] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[53] ,"click",function(event){ 
+ infowindow.content="establiment : ADNEHO SL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[53] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[54] ,"click",function(event){ 
+ infowindow.content="establiment : ADNEHO SL <br>sector : Peix <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[54] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[55] ,"click",function(event){ 
+ infowindow.content="establiment : ADNEHO SL <br>sector : Altres alimentaris <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[55] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[56] ,"click",function(event){ 
+ infowindow.content="establiment : AEROPIC, SA <br>sector : Carnics <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[56] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[57] ,"click",function(event){ 
+ infowindow.content="establiment : AFFINITY PETCARE, SA <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[57] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[58] ,"click",function(event){ 
+ infowindow.content="establiment : AFRUSE, SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[58] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[59] ,"click",function(event){ 
+ infowindow.content="establiment : AGGLOTAP, SA <br>sector : Forestals <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[59] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[60] ,"click",function(event){ 
+ infowindow.content="establiment : AGLO CATALANA DEL SURO, SL <br>sector : Forestals <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[60] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[61] ,"click",function(event){ 
+ infowindow.content="establiment : AGR. I CAIXA AGR. I SECC. DE CR<c8>DIT SANT ISIDRE DE MASPUJOLS, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[61] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[62] ,"click",function(event){ 
+ infowindow.content="establiment : AGR. I CAIXA AGR. I SECC. DE CR<c8>DIT SANT ISIDRE DE MASPUJOLS, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[62] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[63] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA CAL PAU SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[63] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[64] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA CAL PAU SL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[64] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[65] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE CAMARASA, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[65] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[66] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE CAMARASA, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[66] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[67] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE MONTOLIU DE LLEIDA I SECCI<d3> DE CR<c8>DIT SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[67] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[68] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[68] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[69] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[69] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[70] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE S. MART<cd> DE MALD<c0>, SCCL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[70] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[71] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE TORELL<d3>, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[71] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[72] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DE TORELL<d3>, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[72] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[73] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DEL VALL<c8>S, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[73] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[74] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA DEL VALL<c8>S, SCCL <br>sector : Midons <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[74] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[75] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA DELS OMELLS DE NA GAIA SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[75] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[76] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA DELS OMELLS DE NA GAIA SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[76] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[77] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA D'OMELLS DE NA GAIA, SCCL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[77] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[78] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA ESPLUGUENSE, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[78] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[79] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA ESPLUGUENSE, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[79] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[80] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA ESTANY, SL <br>sector : Altres agràries <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[80] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[81] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA I RAMADERA DEL PALLARS DE SORT SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[81] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[82] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA I RAMADERA DEL PALLARS DE SORT SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[82] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[83] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[83] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[84] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[84] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[85] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT LA BORGENCA, SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[85] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[86] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA I SECCI<d3> DE CR<c8>DIT SANT ROC D'ALBESA SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[86] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[87] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA PIVERD SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[87] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[88] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[88] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[89] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[89] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[90] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA PLANA DE VIC I SECCI<d3> DE CR<c8>DIT, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[90] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[91] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA PROGRESIVA, SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[91] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[92] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA PROGRESSIVA BENAVENT DE SEGRI<c0>, SCCL <br>sector : Fruites i hortalisses <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[92] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[93] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA SANT ANTONI ABAD DE M<d3>RA D'EBRE SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[93] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[94] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA SANT ANTONI ABAD DE M<d3>RA D'EBRE SCCL <br>sector : Olis i greixos <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[94] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[95] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA SANT ROC, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[95] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[96] ,"click",function(event){ 
+ infowindow.content="establiment : AGR<c0>RIA SANT ROC, SCCL <br>sector : Alimentació animal <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[96] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[97] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA SANT SALVADOR  D'HORTA, SCCL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[97] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "" }); 
+ google.maps.event.addListener(markersind_spX1x99xX[98] ,"click",function(event){ 
+ infowindow.content="establiment : AGRARIA SANT SALVADOR  D'HORTA, SCCL <br>sector : Begudes <br>"; 
+  infowindow.position =event.latLng; 
+ infowindow.disableAutoPan=false; 
+ infowindow.maxWidth=null;
+ infowindow.pixelOffset=null;
+ infowindow.zIndex=null; infowindow.open(map,markersind_spX1x99xX[98] )});   
+showO(markersind_spX1x99xX,"ind_spX1x99xXbox");  google.maps.event.addListener(map, 'rightclick', function(event) {
+    var lat = event.latLng.lat();
+    var lng = event.latLng.lng();
+    alert('Lat=' + lat + '; Lng=' + lng);});   
+ }
+</script> 
+ </head> 
+ <body onload="initialize()"> 
+ 
+                            <div id="map_canvas"></div>  
+
+                           
+ <div id="cBoxes"> 
+<input type="checkbox" id="ind_spX1x99xXbox" onClick='boxclick(this,markersind_spX1x99xX,"ind_spX1x99xXbox");' /> <b>ind_spX1x99xX<b> <hr /> 
+ <table> <tr>  <td> <input type="checkbox"  checked="checked" id="boxLegend14ab47191892" onClick='legendDisplay(this,"Legend14ab47191892");' /> LEGEND </td> </tr>  <tr> <td>establiment</td> </tr>
+                                    <tr> <td> <div style="display:block;" id="Legend14ab47191892"> <img src="Legend14ab47191892.png" alt="Legend" height="70%"> </div>
+                           </td> </tr> 
+ </table> 
+  <hr> 
+ </div> 
+ </body>  
+  </html>
