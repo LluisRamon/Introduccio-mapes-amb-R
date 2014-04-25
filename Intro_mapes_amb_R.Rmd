@@ -356,7 +356,7 @@ plotGoogleMaps(ind_sp[1:99, ], filename = "Mapes dinamics/plotGoogleMaps.html", 
 ```
 
 <a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html>
-![alt text](images/plotGoogleMaps.png)
+![alt text](images/plotGoogleMaps.jpg)
 </a>
 
 
@@ -372,7 +372,7 @@ browseURL(ind_html)
 ```
 
 <a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/leafletMap/leafletMap.html>
-![alt text](images/Leaflet.png)
+![alt text](images/Leaflet.jpg)
 </a>
 
 ## googleVis
@@ -383,13 +383,12 @@ ind_ali_LonLat$LatLong <- paste(ind_ali_LonLat$lat, ind_ali_LonLat$lon, sep = ":
 indGoogleVis <- gvisMap(ind_ali_LonLat, "LatLong", 
                         options = list(useMapTypeControl = TRUE, 
                                        width = 800,height = 800))
-# plot(indGoogleVis)
 print(indGoogleVis, file = "Mapes dinamics/googleVis.html")
 ```
 
 
 <a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html>
-![alt text](images/googleVis.png) 
+![alt text](images/googleVis.jpg) 
 </a>
 
 
