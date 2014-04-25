@@ -389,11 +389,21 @@ print(indGoogleVis, file = "Mapes dinamics/googleVis.html")
 
 <br>
 
-* sp (informació espacial, mapes temàtics)
-* maptools  (input/output)
-* rgdal  (projeccions, input/output)
-* RgoogleMaps i ggmap (Afegir fons de Google Maps)
-* plotGoogleMaps, leafletR, googleVis (mapes dinàmics)
+* [sp][] (informació espacial, mapes temàtics)
+* [maptools][]  (input/output)
+* [rgdal][]  (projeccions, input/output)
+* [RgoogleMaps][] i [ggmap][] (Afegir fons de Google Maps)
+* [plotGoogleMaps][], [leafletR][], [googleVis][] (mapes dinàmics)
+
+
+[sp]: http://cran.r-project.org/web/packages/sp/index.html
+[maptools]: http://cran.r-project.org/web/packages/maptools/index.html
+[rgdal]: http://cran.r-project.org/web/packages/rgdal/index.html
+[RgoogleMaps]: http://cran.r-project.org/web/packages/RgoogleMaps/index.html
+[ggmap]: http://cran.r-project.org/web/packages/ggmap/index.html
+[plotGoogleMaps]: http://cran.r-project.org/web/packages/plotGoogleMaps/index.html
+[leafletR]: http://cran.r-project.org/web/packages/leafletR/index.html
+[googleVis]: http://cran.r-project.org/web/packages/googleVis/index.html
 
 ## Quins packages NO hem usat?
 
