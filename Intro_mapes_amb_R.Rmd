@@ -297,10 +297,11 @@ PlotOnStaticMap(mapa_fons, ind_peix$lat, ind_peix$lon, pch = 19, cex = 0.7, col 
 
 <br>
 
-* Utilitza [ggplot2][] de base
-* ggplot2 permet fer mapes temàtics (funció fortify i geom_map)
-* ggmap té funcions interessants (geocode, mapdist, route)
-* Explicat a [Introducción práctica a la librería ggplot2 y su integración con ggmap][]
+* Utilitza [ggplot2][] de base.
+* Requereix data.frame com a dades (usar fortify).
+* ggplot2 permet fer mapes temàtics amb geom_map.
+* ggmap té funcions interessants (geocode, mapdist, route).
+* Explicat a [Introducción práctica a la librería ggplot2 y su integración con ggmap][].
 
 [ggplot2]: http://cran.r-project.org/web/packages/ggplot2/index.html
 [Introducción práctica a la librería ggplot2 y su integración con ggmap]: http://rpubs.com/Lluis_Ramon/Prestantacion_ggplot2_ggmap
