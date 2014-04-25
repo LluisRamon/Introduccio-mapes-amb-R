@@ -439,7 +439,7 @@ mapa &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;plotGoogleMaps&quot;</span>)
 ind_sp &lt;-<span class="st"> </span><span class="kw">SpatialPointsDataFrame</span>(ind_sp_LonLat, ind_ali[, <span class="kw">c</span>(<span class="st">&quot;establiment&quot;</span>, <span class="st">&quot;sector&quot;</span>)])
 <span class="kw">plotGoogleMaps</span>(ind_sp[<span class="dv">1</span>:<span class="dv">99</span>, ], <span class="dt">filename =</span> <span class="st">&quot;Mapes dinamics/plotGoogleMaps.html&quot;</span>, <span class="dt">mapTypeId =</span> <span class="st">&quot;ROADMAP&quot;</span>)</code></pre>
-<p><img src="images/plotGoogleMaps.png" alt="alt text" /> <a href="http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html">http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html</a></p>
+<p><a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html> <img src="images/plotGoogleMaps.png" alt="alt text" /> </a></p>
 </section>
 <section id="leafletr" class="slide level2">
 <h1>LeafletR</h1>
@@ -447,7 +447,7 @@ ind_sp &lt;-<span class="st"> </span><span class="kw">SpatialPointsDataFrame</sp
 leaflet &lt;-<span class="st"> </span><span class="kw">toGeoJSON</span>(<span class="dt">data =</span> ind_ali_LonLat[<span class="dv">1</span>:<span class="dv">99</span>, <span class="kw">c</span>(<span class="st">&quot;lat&quot;</span>,  <span class="st">&quot;lon&quot;</span>, <span class="st">&quot;sector&quot;</span>)], <span class="dt">dest =</span> <span class="st">&quot;Mapes dinamics&quot;</span>, <span class="dt">name =</span> <span class="st">&quot;leaflet&quot;</span>)
 ind_html &lt;-<span class="st"> </span><span class="kw">leaflet</span>(<span class="dt">data =</span> leaflet, <span class="dt">dest =</span> <span class="st">&quot;leaflet&quot;</span>, <span class="dt">popup =</span><span class="st">&quot;sector&quot;</span>, <span class="dt">base.map=</span><span class="st">&quot;mqsat&quot;</span>, <span class="dt">incl.data =</span> <span class="ot">TRUE</span>)
 <span class="kw">browseURL</span>(ind_html)</code></pre>
-<p><img src="images/Leaflet.png" alt="alt text" /> <a href="http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/leafletMap/leafletMap.html">http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/leafletMap/leafletMap.html</a></p>
+<p><a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/leafletMap/leafletMap.html> <img src="images/Leaflet.png" alt="alt text" /> </a></p>
 </section>
 <section id="googlevis" class="slide level2">
 <h1>googleVis</h1>
@@ -458,7 +458,7 @@ indGoogleVis &lt;-<span class="st"> </span><span class="kw">gvisMap</span>(ind_a
                                        <span class="dt">width =</span> <span class="dv">800</span>,<span class="dt">height =</span> <span class="dv">800</span>))
 <span class="co"># plot(indGoogleVis)</span>
 <span class="kw">print</span>(indGoogleVis, <span class="dt">file =</span> <span class="st">&quot;Mapes dinamics/googleVis.html&quot;</span>)</code></pre>
-<p><img src="images/googleVis.png" alt="alt text" /> <a href="http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html">http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html</a></p>
+<p><a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html> <img src="images/googleVis.png" alt="alt text" /> </a></p>
 </section>
 <section id="quins-packages-hem-usat" class="slide level2">
 <h1>Quins packages hem usat?</h1>

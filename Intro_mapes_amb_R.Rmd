@@ -355,7 +355,11 @@ ind_sp <- SpatialPointsDataFrame(ind_sp_LonLat, ind_ali[, c("establiment", "sect
 plotGoogleMaps(ind_sp[1:99, ], filename = "Mapes dinamics/plotGoogleMaps.html", mapTypeId = "ROADMAP")
 ```
 
-![alt text](images/plotGoogleMaps.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html
+<a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/plotGoogleMaps.html>
+![alt text](images/plotGoogleMaps.png)
+</a>
+
+
 
 ## LeafletR
 
@@ -367,7 +371,9 @@ browseURL(ind_html)
 
 ```
 
-![alt text](images/Leaflet.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/leafletMap/leafletMap.html
+<a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/leafletMap/leafletMap.html>
+![alt text](images/Leaflet.png)
+</a>
 
 ## googleVis
 
@@ -381,9 +387,11 @@ indGoogleVis <- gvisMap(ind_ali_LonLat, "LatLong",
 print(indGoogleVis, file = "Mapes dinamics/googleVis.html")
 ```
 
-![alt text](images/googleVis.png) http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html
 
----
+<a href = http://lluisramon.github.io/Introduccio-mapes-amb-R/Mapes%20dinamics/ggVisMap.html>
+![alt text](images/googleVis.png) 
+</a>
+
 
 ## Quins packages hem usat?
 
